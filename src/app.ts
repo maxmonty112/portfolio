@@ -1,6 +1,7 @@
 import winston from "winston";
 import setupLogger from "./setup/setupLogger";
 import priceController from "./controllers/priceController";
+import scheduleTask from "./setup/scheduledTask";
 
 const onServiceError = (error: Error) => {
     winston.error('Failed on start', error);
@@ -24,7 +25,6 @@ const init = async () => {
 
 init().then(async () => {
     winston.info('Server started', { time: new Date() });
-    await priceController.updateStockPrices(); // initial run
-    await setInterval(priceController.updateStockPrices, 60000 * 5); // run again every 24 hours
+    await scheduleTask(priceController.updateStockPrices, 24);
 }).catch(onServiceError);
 

@@ -1,7 +1,8 @@
 import winston from "winston";
 import _ from "lodash";
 import airtableService from "../services/airtableService";
-import priceService, {TickerAndRowId} from "../services/priceService";
+import priceService from "../services/priceService";
+import {TickerAndRowId} from "../constants/types";
 
 
 export default class priceController {

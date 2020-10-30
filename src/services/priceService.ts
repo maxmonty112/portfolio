@@ -1,10 +1,6 @@
 import alphavantageService from "./alphavantageService";
 import airtableService from "./airtableService";
-
-export type TickerAndRowId = {
-    ticker: string;
-    id: string;
-};
+import {TickerAndRowId} from "../constants/types";
 
 export default class priceService {
     static setPrices = async (chunk: TickerAndRowId[]) => {
