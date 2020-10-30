@@ -1,63 +1,30 @@
-import alphavantage from "alphavantage";
-import airtable from "airtable";
-import dotenv from "dotenv";
-import _ from "lodash";
+import winston from "winston";
+import setupLogger from "./setup/setupLogger";
+import priceController from "./controllers/priceController";
 
-dotenv.config();
+const onServiceError = (error: Error) => {
+    winston.error('Failed on start', error);
+    process.exit(1);
+};
 
-airtable.configure({
-    apiVersion: undefined, noRetryIfRateLimited: undefined,
-    endpointUrl: process.env.AIRTABLE_URL,
-    apiKey: process.env.AIRTABLE_API_KEY
+// Catch unhandled promises
+process.on('unhandledRejection', (reason: {} | null | undefined) => {
+    winston.error('Unhandled promise exception', reason);
 });
 
-type TickerAndRowId = {
-    ticker: string;
-    id: string;
+// Catch general exceptions
+process.on('uncaughtException', (err: Error) => {
+    winston.error(`uncaughtException: ${err.message}`, err);
+    process.exit(1);
+});
+
+const init = async () => {
+    setupLogger();
 };
 
-//TODO: add logging
-//TODO: update file structure
+init().then(async () => {
+    winston.info('Server started', { time: new Date() });
+    await priceController.updateStockPrices(); // initial run
+    await setInterval(priceController.updateStockPrices, 60000 * 5); // run again every 24 hours
+}).catch(onServiceError);
 
-const main = async () => {
-    try {
-        const alpha = alphavantage({key: process.env.ALPHAVANTAGE_API_KEY_2});
-        const base = airtable.base(process.env.AIRTABLE_BASE);
-        const records = await base('Stocks').select().all();
-        const tickersAndIds: TickerAndRowId[] = records.map((record) => {
-            return {ticker: record.fields.Ticker, id: record.id}
-        });
-        const chunks: TickerAndRowId[][] = _.chunk(tickersAndIds, 5);
-        let chunkNumber = 0;
-        const setPrices = async (chunk: TickerAndRowId[]) => {
-            const results = await Promise.all(chunk.map(async (tickerAndId) => {
-                const quote = await alpha.data.quote(tickerAndId.ticker);
-                const id = tickerAndId.id;
-                return {quote, id};
-            }));
-            const prices = results.map((result) => {
-                const object = result.quote["Global Quote"];
-                return {Ticker: object["01. symbol"], Price: parseFloat(object["05. price"]), Id: result.id}
-            });
-            await Promise.all(prices.map(async (price) => {
-                await base('Stocks').update(price.Id, {Price: price.Price});
-            }));
-        };
-        await Promise.all(chunks.map(async (chunk) => {
-            if (chunkNumber > 0) {
-                await setTimeout(async () => {
-                    await setPrices(chunk);
-                    chunkNumber++;
-                    },
-                    60000);
-            } else {
-                chunkNumber++;
-                await setPrices(chunk);
-            }
-        }));
-    } catch (e) {
-        console.log(e);
-    }
-};
-
-main();
