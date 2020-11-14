@@ -10,6 +10,9 @@ const config = {
     },
     alphavantage: {
         apiKey: process.env.ALPHAVANTAGE_API_KEY
+    },
+    coinMarketCap: {
+        apiKey: process.env.COIN_MARKET_CAP_API_KEY
     }
 };
 

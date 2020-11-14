@@ -3,7 +3,7 @@ import airtableService from "./airtableService";
 import {TickerAndRowId} from "../constants/types";
 
 export default class priceService {
-    static setPrices = async (chunk: TickerAndRowId[]) => {
+    static setStockPrices = async (chunk: TickerAndRowId[]) => {
         const results = await Promise.all(chunk.map(async (tickerAndId) => {
             const quote = await alphavantageService.getQuote(tickerAndId.ticker);
             return {...quote, id: tickerAndId.id};

@@ -11,7 +11,10 @@ const base = airtable.base(config.airtable.base);
 
 export default class airtableService {
 
-    static getRecords = async (tableName: string) => await base(tableName).select().all();
+    static getRecords = async (tableName: string) => {
+        const response = await base(tableName).select().all();
+        return response.map(record => ({ ticker: record.fields.Ticker, id: record.id }))
+    };
 
     static updateRecord = async (tableName: string, recordId: string, record: any) => await base(tableName).update(recordId, record);
 }
