@@ -25,6 +25,6 @@ const init = async () => {
 
 init().then(async () => {
     winston.info('Server started', { time: new Date() });
-    await scheduleTask(priceController.updateStockPrices, 24);
+    await scheduleTask(priceController.updateCryptoPrices, 24);
 }).catch(onServiceError);
 

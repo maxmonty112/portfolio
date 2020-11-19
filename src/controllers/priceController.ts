@@ -23,7 +23,11 @@ export default class priceController {
     };
 
     static updateCryptoPrices = async () => {
-        winston.info('Stock price update started', { time: new Date() });
-        const records: TickerAndRowId[] = await airtableService.getRecords('Crypto');
+        winston.info('Crypto price update started', { time: new Date() });
+        await priceService.setCryptoPrices();
+        winston.info('Crypto price update complete', { time: new Date() });
+    }
+    static test = async () => {
+	    winston.info('test');
     }
 }
