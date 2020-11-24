@@ -1,13 +1,15 @@
-const HOURS_TO_MS = 60 * 60 * 1000;
+const hoursToMs = (hours: number) => hours * 60 * 60 * 1000;
+const minsToMs = (minutes: number) => minutes * 60 * 1000;
 
 const scheduleTask = async (
     func: () => {},
-    delayInHours: number
+    minutes: number,
+    hours: number
 ) => {
-    await func();
-    await setInterval(async () => {
-        await func();
-    }, delayInHours * HOURS_TO_MS);
+    setTimeout(func, minsToMs(minutes));
+    setInterval(() => {
+        func();
+    },  hoursToMs(hours));
 };
 
 export default scheduleTask;

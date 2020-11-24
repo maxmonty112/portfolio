@@ -1,11 +1,18 @@
-import alphavantage from "alphavantage";
 import config from "../setup/config";
+import axios from "axios";
 
-const alpha = alphavantage({key: config.alphavantage.apiKey});
+const { url, apiKey } = config.alphavantage;
 
 export default class alphavantageService {
-    static getQuote = async (ticker: string ): Promise<{ ticker: string, price: number }> => {
-        const quote = await alpha.data.quote(ticker).then((response) => response["Global Quote"]);
-        return { ticker: quote["01. symbol"], price: parseFloat(quote["05. price"]) }
+    static getQuote = async (symbol: string ): Promise<number> => {
+        const response = await axios.get(`${url}/query`, {
+            params: {
+                function: 'GLOBAL_QUOTE',
+                symbol,
+                apikey: apiKey
+            }
+        });
+        console.log(response);
+        return parseFloat(response.data["Global Quote"]["05. price"]);
     }
 }
