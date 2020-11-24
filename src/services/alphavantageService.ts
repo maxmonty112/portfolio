@@ -12,7 +12,6 @@ export default class alphavantageService {
                 apikey: apiKey
             }
         });
-        console.log(response);
         return parseFloat(response.data["Global Quote"]["05. price"]);
     }
 }

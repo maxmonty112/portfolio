@@ -1,7 +1,7 @@
 const hoursToMs = (hours: number) => hours * 60 * 60 * 1000;
 const minsToMs = (minutes: number) => minutes * 60 * 1000;
 
-const scheduleTask = async (
+const schedule = async (
     func: () => {},
     minutes: number,
     hours: number
@@ -12,4 +12,4 @@ const scheduleTask = async (
     },  hoursToMs(hours));
 };
 
-export default scheduleTask;
+export default schedule;

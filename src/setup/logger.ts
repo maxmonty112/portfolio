@@ -21,7 +21,7 @@ const consoleFormat = winston.format.combine(
     ),
 );
 
-const setupLogger = () => {
+const logger = () => {
     winston.add(
         new winston.transports.File({
             filename: `${appRoot}/logs/app.log`,
@@ -53,4 +53,4 @@ const setupLogger = () => {
     );
 };
 
-export default setupLogger;
+export default logger;
