@@ -9,10 +9,12 @@ const config = {
         base: process.env.AIRTABLE_BASE
     },
     alphavantage: {
-        apiKey: process.env.ALPHAVANTAGE_API_KEY
+        apiKey: process.env.ALPHAVANTAGE_API_KEY,
+        url: process.env.ALPHAVANTAGE_URL
     },
     coinMarketCap: {
-        apiKey: process.env.COIN_MARKET_CAP_API_KEY
+        apiKey: process.env.COIN_MARKET_CAP_API_KEY,
+        url: process.env.COIN_MARKET_CAP_URL
     }
 };
 

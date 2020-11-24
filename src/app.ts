@@ -1,30 +1,29 @@
 import winston from "winston";
-import setupLogger from "./setup/setupLogger";
+import logger from "./setup/logger";
 import priceController from "./controllers/priceController";
-import scheduleTask from "./setup/scheduledTask";
+import schedule from "./setup/task";
 
-const onServiceError = (error: Error) => {
+const startError = (error: Error) => {
     winston.error('Failed on start', error);
     process.exit(1);
 };
 
-// Catch unhandled promises
 process.on('unhandledRejection', (reason: {} | null | undefined) => {
     winston.error('Unhandled promise exception', reason);
 });
 
-// Catch general exceptions
 process.on('uncaughtException', (err: Error) => {
     winston.error(`uncaughtException: ${err.message}`, err);
     process.exit(1);
 });
 
 const init = async () => {
-    setupLogger();
+    logger();
 };
 
 init().then(async () => {
     winston.info('Server started', { time: new Date() });
-    await scheduleTask(priceController.updateStockPrices, 24);
-}).catch(onServiceError);
+    await schedule(priceController.updateCryptoPrices, 0, 24);
+    await schedule(priceController.updateStockPrices, 1, 24);
+}).catch(startError);
 
