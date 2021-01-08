@@ -1,6 +1,6 @@
 # Notes
 
-A minamlist command-line interface for note taking and organization, journaling, and task tracking/managment.
+A minamlist command-line interface for note taking and organization, journaling, and task-tracking/managment.
 
 ### Installation
 1. Clone repo
