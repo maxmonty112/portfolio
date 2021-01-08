@@ -1,6 +1,6 @@
 # Notes
 
-A minamlist command-line interface for note taking and organization, journaling, and task-tracking/managment.
+A minamlist command-line interface for note taking and organization, journaling, and task-tracking/managment written in ruby inspired by Max Hodak's note-taking [system](https://github.com/maxhodak/notes) written in python. 
 
 ### Installation
 1. Clone repo
