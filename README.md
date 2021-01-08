@@ -4,7 +4,7 @@ A minamlist command-line interface for note taking and organization, journaling,
 
 ### Installation
 1. Clone repo
-2. Export $NOTESPATH from your profile. Something like this: 
+2. Export `$NOTESPATH` from your profile. Something like this: 
 
     ```
     export NOTESPATH="/path/to/home/documents/notes"
