@@ -2,7 +2,7 @@ install:
 	touch script.rb
 	cat src/main.rb > script.rb
 	cat src/constants.rb >> script.rb 
-	cat src/help.rb >> script.rb
+	cat src/info.rb >> script.rb
 	cat src/helpers.rb >> script.rb
 	cat src/commands.rb >> script.rb
 	cp script.rb /usr/local/bin/notes
