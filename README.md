@@ -3,6 +3,6 @@
 A command-line interface for note taking
 
 ### Installation
-export $NOTESPATH env var wherever you want your notes to save. Something like this: 
+1. Set $NOTESPATH to wherever you want your notes to save by adding something like this to your .bash_profile: 
 
 `export NOTESPATH="/Users/maxmontgomery/documents/notes"`
