@@ -1,16 +1,16 @@
 # Notes
 
-A command-line interface for note taking
+A minamlist command-line interface for note taking and organization, journaling, and task tracking/managment.
 
 ### Installation
-1. clone repo
-2. set $NOTESPATH to wherever you want your notes to be saved by adding something like this to your .bash_profile: 
+1. Clone repo
+2. Export $NOTESPATH from your profile. Something like this: 
 
     ```
-    export NOTESPATH="/Users/maxmontgomery/documents/notes"
+    export NOTESPATH="/path/to/home/documents/notes"
     ```
     
-3. cd into reop and install script as bin utility by running:
+3. `cd` into repo and install:
 
     ```
     make install
