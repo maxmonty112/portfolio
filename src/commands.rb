@@ -54,7 +54,7 @@ elsif ARGV[0] == "edit"
   elsif notes.length < 1
     puts "\nFile not found. Use 'notes -l' to see all notes.\n\n"
   else 
-    puts "\nMultiple notes found:\n\n"
+    puts "Multiple notes found.\n----"
     select_edit_move_file(notes)
   end
 
