@@ -45,7 +45,7 @@ def select_edit_move_file(f)
     puts "[#{c}]  #{x}"
     c = c + 1
   end
-  print "\nChoose an index to edit (or 'q' to quit): "
+  print "----\nChoose an index to edit (or 'q' to quit): "
   input = STDIN.gets
   exit if input == "q\n" or input == "\n"
   i = input.to_i
