@@ -1,20 +1,18 @@
 def mkdir_cur_date
-  path = "#{$notespath}/#{$time.strftime("%Y/%m/%d")}"
+  path = $time.strftime("%Y/%m/%d")
   FileUtils.mkdir_p(path)
   return path
 end
 
 def edit_file(path)
-  system("$EDITOR #{path}")
+  system("$EDITOR #{$notespath}/#{path}")
 end
 
 def move_file(file, loc)
   file_s = file.split('/')
-  file_s.pop()
+  note = file_s.pop()
   loc_s = loc.split('/')
-  if file_s != loc_s
-    system("mv #{file} #{loc}")
-  end
+  system("mv #{$notespath}/#{file} #{$notespath}/#{loc}") if file_s != loc_s and note != 'daily.md'
 end
 
 def load_stack(stack_name)
@@ -30,11 +28,7 @@ def trim_paths(paths)
   trimmed_paths = []
   for x in split
     file = x.split('/')
-    if file[-1][0] == '.'
-      # ignore hidden files
-    else
-      trimmed_paths.push(file[-4..-1].join('/'))
-    end
+    trimmed_paths.push(file[-4..-1].join('/')) if file[-1][0] != '.'
   end
   return trimmed_paths
 end
@@ -58,18 +52,20 @@ def select_edit_move_file(files)
   end
   print "\nChoose an index to edit (or 'q' to quit): "
   input = STDIN.gets.chomp 
-  if input.to_s == 'q'
-    puts "\n"
-    exit
-  end
+  exit if input == 'q'
   index = input.to_i
   if index > files.length-1 or index < 0
     puts "\nIndex out of range\n\n"
     exit
   end
-  file_path = "#{$notespath}/#{files[index]}"
-  edit_file(file_path)
+  note_path = files[index]
+  if note_path.split(':').length > 1
+    note_path = note_path.split(':')
+    note_path.pop()
+    note_path = note_path[0..-1].join('/')
+  end
+  edit_file(note_path)
   path = mkdir_cur_date()
-  move_file(file_path, path)
+  move_file(note_path, path)
   puts "\n"
 end

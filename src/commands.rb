@@ -9,6 +9,8 @@ if ARGV[0] == "new"
     show_help()
   end
   # TODO: if note name exists, give option to edit old or change name of new note
+  name = "#{ARGV[1..-1].join('_')}.md"
+  note = search_note_names(name).map { |x| return x.split('/').pop() }
   path = mkdir_cur_date()
   edit_file("#{path}/#{ARGV[1..-1].join('_')}.md")
   
@@ -36,29 +38,16 @@ elsif ARGV[0] == "search"
   
 # edit note
 elsif ARGV[0] == "edit"
-  o = Open3.capture2("find #{$notespath} -type f -name #{ARGV[1]}*")[0]
-  files = o.split("\n")
-  if files.length == 1
-    edit_file(files[0])
+  notes = search_note_names(ARGV[1..-1].join('_'))
+  if notes.length == 1
+    edit_file(notes[0])
     path = mkdir_cur_date()
-    if files[0].split('/')[-1] != 'daily.md'
-      move_file(files[0], path)
-    end
-  elsif files.length < 1
+    move_file(notes[0], path) 
+  elsif notes.length < 1
     puts "\nFile not found. Use 'notes -l' to see all notes.\n\n"
-  elsif files.length > 1
+  else 
     puts "\nMultiple notes found:\n\n"
-    count = 0
-    for file in files
-      # TODO trim output
-      puts "[#{count}]  #{file}"
-      count = count + 1
-    end
-    print "\nChoose an index: "
-    index = STDIN.gets.to_i
-    edit_file(files[index])
-    path = mkdir_cur_date()
-    move_file(files[index], path)
+    select_edit_move_file(notes)
   end
 
 # scratch
