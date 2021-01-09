@@ -10,29 +10,37 @@ if ARGV[0] == "new"
   end
   # TODO: if note name exists, give option to edit old or change name of new note
   name = "#{ARGV[1..-1].join('_')}.md"
-  note = search_note_names(name).map { |x| return x.split('/').pop() }
+  if name == "daily.md"
+    puts "Use 'notes journal' to create daily note" 
+    exit
+  end
+  for x in search_note_names(name)
+    if x.split('/').pop() == name
+      print "Note with that name already exists. Do you want to edit it (y/n)? "
+      input = STDIN.gets
+      exit if input == "n\n" or input == "\n"
+      edit_file(x)
+      move_file(x, mkdir_cur_date())
+      exit
+    end
+  end
   path = mkdir_cur_date()
-  edit_file("#{path}/#{ARGV[1..-1].join('_')}.md")
+  edit_file("#{path}/#{name}")
   
 # search
 elsif ARGV[0] == "search"
   if ARGV.length == 1
     show_help()
   elsif ARGV[1] == '-f'
-    phrase = ARGV[2..-1]
-    notes = search_note_names(phrase.join('_'))
-    puts "\n*notes*\n\n" 
+    notes = search_note_names(ARGV[2..-1].join('_'))
     select_edit_move_file(notes)
   elsif ARGV[1] == '-t'
-    phrase = ARGV[2..-1]
-    notes = search_note_contents(phrase.join(' '))
-    puts "\n*mentions*\n\n"
+    notes = search_note_contents(ARGV[2..-1].join(' '))
     select_edit_move_file(notes)
   else 
     phrase = ARGV[1..-1]
     names = search_note_names(phrase.join('_'))
     mentions = search_note_contents(phrase.join(' '))
-    puts "\n*notes + mentions*\n\n"
     select_edit_move_file(names + mentions)
   end
   
@@ -73,7 +81,7 @@ elsif ARGV[0] == '-l' or ARGV[0] == '--list'
 
 # stack
 elsif ARGV[0] == 'stack'
-  if ARGV.length == 1 # display notestack
+  if ARGV.length == 1 or ARGV[1] == '-d' # display notestack
     stack = load_stack($default_stack)
     if !stack.nil?
       for i in 0..stack.length-1
