@@ -4,16 +4,18 @@ A minamlist command-line interface for note taking and organization, journaling,
 
 ### Installation
 1. Clone repo
-2. Export `$NOTESPATH` from your profile. Something like this: 
+2. Export `$NOTESPATH` (where you want your notes to be saved) and `$NOTESCRIPT` (where you cloned this repo) from your profile. Something like this: 
 
     ```
     export NOTESPATH="/path/to/home/documents/notes"
+    export NOTESCRIPT="/path/to/where/you/cloned/repo/notes"
     ```
     
-3. `cd` into repo and install:
+3. `cd` into repo and run the following commands:
 
     ```
     make install
+    bundle install
     ```
     
    
