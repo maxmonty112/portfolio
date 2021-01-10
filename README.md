@@ -67,7 +67,7 @@ This will show all notes containing 'idea' in their name and all notes in which 
 [0]  2021/01/10/my_brilliant_idea.md
 [1]  2020/12/25/ideas.md
 [2]  2021/01/07/books.md:- **Essays**, **Ideas and Opinions**, Albert Einstein
-[3]  2021/01/07/books.md:*Survey of the philosophizers of the 20th century that prevade modern thinking and contributed to the ideas that have formed my own*
+[3]  2021/01/07/books.md:*Philosphers that prevade modern thinking and contributed to my own ideas:*
 [4]  2021/01/09/dhamma_letter_13.md:Dhamma letter # 13 need idea to to understand. Too theoretical now. 
 ----
 Choose an index to edit (or 'q' to quit):
@@ -88,7 +88,7 @@ Use `t` to search for mentions only:
 ```
 $ notes search -t idea
 [0]  2021/01/07/books.md:- **Essays**, **Ideas and Opinions**, Albert Einstein
-[1]  2021/01/07/books.md:*Survey of the philosophizers of the 20th century that prevade modern thinking and contributed to the ideas that have formed my own*
+[1]  2021/01/07/books.md:*Philosphers that prevade modern thinking and contributed to my own ideas:*
 [2]  2021/01/09/dhamma_letter_13.md:Dhamma letter # 13 need idea to to understand. Too theoretical now. 
 ----
 Choose an index to edit (or 'q' to quit): 
