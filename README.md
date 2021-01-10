@@ -34,7 +34,9 @@ notes pop [-d] <stack> <index> --- pop off stack
 ```
 To create a new note: 
 
-```$ notes new my brilliant idea```
+```
+$ notes new my brilliant idea
+```
 
 This will create a new note `$NOTESPATH/year/month/date/my_brilliant_idea.md` and open your default editor. 
 
