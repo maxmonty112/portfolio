@@ -15,18 +15,6 @@ class Stack
     end
   end
 
-  def pop_last_in
-    if ARGV.length == 2 # pop last added
-      stack = @@u.load_stack(@@default_stack)
-      stack.pop()
-      @@u.save_stack(stack, @@default_stack)
-    elsif ARGV.length == 3 # pop by index
-      stack = @@u.load_stack(@@default_stack)
-      stack.delete_at(ARGV[1].to_i) 
-      @@u.save_stack(stack, @@default_stack)
-    end
-  end
-
   def new
     if ARGV.length != 3
       puts "Error: stack name must be one word\n----"
