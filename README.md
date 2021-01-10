@@ -57,6 +57,9 @@ Multiple notes found.
 ----
 Choose an index to edit (or 'q' to quit): 
 ```
+
+When you edit a note, it moves it to the directory corresponding to the current date. 
+
 **Searching**
 ```
 $ notes search idea
@@ -73,7 +76,7 @@ This will show all notes containing 'idea' in their name and all notes in which 
 Choose an index to edit (or 'q' to quit):
 ```
 
-Use `f` to search only note names:
+Use `-f` to search only note names:
 
 ```
 $ notes search -f idea
@@ -83,7 +86,7 @@ $ notes search -f idea
 Choose an index to edit (or 'q' to quit):
 ```
 
-Use `t` to search for mentions only: 
+Use `-t` to search for mentions only: 
 
 ```
 $ notes search -t idea
@@ -129,6 +132,126 @@ Outputs all your notes. Looks like this:
 ```
 $ notes -h
 ```
+
+### Stack
+
+This tool allows you to maintain numerous stacks to track various work flows. 
+
+**Default stack**
+
+`notes` comes with a default stack. To push to the default stack, run the following command:
+
+```
+$ notes push -d go for a run
+```
+
+And then you can display the default stack with:
+
+```
+$ notes stack
+[0] read
+[1] stretch
+[2] go for a run
+
+```
+
+To pop the last note added to the default stack:
+
+```
+$ notes pop -d
+```
+
+Or you can pop by index:
+
+```
+$ notes pop -d 1
+```
+
+**Custom stacks*
+
+To create a custom stack:
+
+```
+$ notes -n bolc
+```
+
+Then you can push to that stack:
+
+```
+$ notes push bolc get new boots
+```
+
+And display that stack: 
+
+```
+$ notes stack bolc
+[0] get new boots
+```
+
+Popping off that stack works the same way as default stack.
+
+```
+$ notes pop bolc
+```
+
+or 
+
+```
+$ notes pop bolc 0
+```
+
+To see all your stacks:
+
+```
+$ notes stack -l
+default
+notes
+dhamma_letter
+bolc
+sfs
+```
+
+To see all your notes on all your stacks:
+
+```
+$ notes stack -a
+*default*
+[0] read
+[1] stretch
+[2] go for a run
+----
+*notes*
+[0] create help message
+[1] exit if error or show help, de nest logic after
+[2] better error messages
+[3] order notes when listing by date
+[4] search by date
+[5] open journal yesterday/tomorrow
+----
+*dhamma_letter*
+[0] edit 12 + 13
+[1] download website content
+----
+*bolc*
+[0] get new boots
+----
+*sfs*
+[0] update doorvest model
+```
+
+And to remove a stack:
+
+```
+$ notes stack -r bolc
+```
+
+### Journal
+
+```
+$ notes journal
+```
+
+This will create a note `$NOTESPATH/year/month/date/daily.md` (or edit if already created for the current day). You can edit previous daily notes and they will note be moved to a new directory. 
 
 ### Helpful Aliases
 
