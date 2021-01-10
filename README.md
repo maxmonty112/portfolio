@@ -64,10 +64,6 @@ When you edit a note, it moves it to the directory corresponding to the current 
 
 ```
 $ notes search idea
-```
-This will show all notes containing 'idea' in their name and all notes in which 'idea' is written. Output will look like this:
-
-```
 [0]  2021/01/10/my_brilliant_idea.md
 [1]  2020/12/25/ideas.md
 [2]  2021/01/07/books.md:- **Essays**, **Ideas and Opinions**, Albert Einstein
@@ -76,6 +72,7 @@ This will show all notes containing 'idea' in their name and all notes in which 
 ----
 Choose an index to edit (or 'q' to quit):
 ```
+This will show all notes containing 'idea' in their name and all notes in which 'idea' is written.
 
 Use `-f` to search only note names:
 
@@ -110,11 +107,6 @@ Opens up a hidden file on $NOTESPATH to use as a scratch pad
 
 ```
 $ notes -l
-```
-
-Outputs all your notes. Looks like this:
-
-```
 2021/01/04/daily.md
 2021/01/04/dhamma_letter_11.md
 2021/01/10/my_brilliant_idea.md
@@ -202,7 +194,7 @@ Popping off that stack works the same way as default stack.
 $ notes pop bolc
 ```
 
-or...
+or pop at index...
 
 ```
 $ notes pop bolc 0
