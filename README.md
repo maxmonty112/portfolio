@@ -3,20 +3,21 @@
 A minamlist command-line interface for note taking and organization, journaling, and task-tracking/managment written in ruby inspired by (and emulative of) Max Hodak's note-taking [system](https://github.com/maxhodak/notes) written in python. 
 
 ### Installation
-1. Clone repo
-2. Add the following to your `.bash_profile`: 
+Clone repo
 
-    ```
-    export NOTESPATH="/path/to/where/you/want/notes/saved"
-    export NOTESCRIPT="/path/to/where/you/cloned/this/repo"
-    ```
+Add the following to your `.bash_profile`: 
+
+```
+export NOTESPATH="/path/to/where/you/want/notes/saved"
+export NOTESCRIPT="/path/to/where/you/cloned/this/repo"
+```
     
-3. Run the following commands inside repo:
+Run the following commands inside repo:
 
-    ```
-    make install
-    bundle install
-    ```
+```
+make install
+bundle install
+```
     
 ### Usage
 
