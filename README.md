@@ -161,7 +161,6 @@ $ notes stack
 [0] read
 [1] stretch
 [2] go for a run
-
 ```
 
 To pop the last note added to the default stack:
@@ -203,7 +202,7 @@ Popping off that stack works the same way as default stack.
 $ notes pop bolc
 ```
 
-or 
+or...
 
 ```
 $ notes pop bolc 0
