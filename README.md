@@ -32,7 +32,7 @@ notes stack [-adlnr] <title> --- create, delete, list, display stacks
 notes push [-d] <stack> --- push to stack
 notes pop [-d] <stack> <index> --- pop off stack
 ```
-To create a new note: 
+**Create a new note**
 
 ```
 $ notes new my brilliant idea
