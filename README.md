@@ -57,7 +57,7 @@ Multiple notes found.
 ----
 Choose an index to edit (or 'q' to quit): 
 ```
-**Search notes**
+**Searching**
 ```
 $ notes search idea
 ```
@@ -68,7 +68,7 @@ This will show all notes containing 'idea' in their name and all notes in which 
 [1]  2020/12/25/ideas.md
 [2]  2021/01/07/books.md:- **Essays**, **Ideas and Opinions**, Albert Einstein
 [3]  2021/01/07/books.md:*Philosphers that prevade modern thinking and contributed to my own ideas:*
-[4]  2021/01/09/dhamma_letter_13.md:Dhamma letter # 13 need idea to to understand. Too theoretical now. 
+[4]  2021/01/09/dhamma_letter_13.md:Dhamma letter # 13 need idea to understand. Too theoretical now. 
 ----
 Choose an index to edit (or 'q' to quit):
 ```
@@ -89,9 +89,45 @@ Use `t` to search for mentions only:
 $ notes search -t idea
 [0]  2021/01/07/books.md:- **Essays**, **Ideas and Opinions**, Albert Einstein
 [1]  2021/01/07/books.md:*Philosphers that prevade modern thinking and contributed to my own ideas:*
-[2]  2021/01/09/dhamma_letter_13.md:Dhamma letter # 13 need idea to to understand. Too theoretical now. 
+[2]  2021/01/09/dhamma_letter_13.md:Dhamma letter # 13 need idea to understand. Too theoretical now. 
 ----
 Choose an index to edit (or 'q' to quit): 
+```
+
+**Scratch pad**
+
+```
+$ notes scratch
+```
+
+Opens up a hidden file on $NOTESPATH to use as a scratch pad
+
+**List all notes**
+
+```
+$ notes -l
+```
+
+Outputs all your notes. Looks like this:
+
+```
+2021/01/04/daily.md
+2021/01/04/dhamma_letter_11.md
+2021/01/10/my_brilliant_idea.md
+2021/01/07/books.md
+2021/01/09/workouts.md
+2021/01/09/dhamma_letter_12.md
+2021/01/09/dhamma_letter_13.md
+2021/01/09/documentaries.md
+2021/01/08/daily.md
+2021/01/08/stretching.md
+2020/12/25/ideas.md
+```
+
+**Show help**
+
+```
+$ notes -h
 ```
 
 ### Helpful Aliases
