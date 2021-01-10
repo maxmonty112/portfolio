@@ -33,7 +33,7 @@ notes stack [-adlnr] <title> --- create, delete, list, display stacks
 notes push [-d] <stack> --- push to stack
 notes pop [-d] <stack> <index> --- pop off stack
 ```
-**Create a new note**
+### Create notes
 
 ```
 $ notes new my brilliant idea
@@ -41,7 +41,7 @@ $ notes new my brilliant idea
 
 This will create a new note `$NOTESPATH/year/month/date/my_brilliant_idea.md` and open your default editor.
 
-**Edit an existing note**
+### Edit notes
 
 ```
 $ notes edit idea
@@ -60,7 +60,8 @@ Choose an index to edit (or 'q' to quit):
 
 When you edit a note, it moves it to the directory corresponding to the current date. 
 
-**Searching**
+### Search notes
+
 ```
 $ notes search idea
 ```
@@ -97,7 +98,7 @@ $ notes search -t idea
 Choose an index to edit (or 'q' to quit): 
 ```
 
-**Scratch pad**
+### Scratch pad
 
 ```
 $ notes scratch
@@ -127,7 +128,7 @@ Outputs all your notes. Looks like this:
 2020/12/25/ideas.md
 ```
 
-**Show help**
+### Show help 
 
 ```
 $ notes -h
@@ -145,7 +146,7 @@ This will create a note `$NOTESPATH/year/month/date/daily.md` (or edit if alread
 
 This tool allows you to maintain numerous stacks to track various work flows. 
 
-**Default stack**
+### Default stack
 
 `notes` comes with a default stack. To push to the default stack, run the following command:
 
@@ -175,7 +176,7 @@ Or you can pop by index:
 $ notes pop -d 1
 ```
 
-**Custom stacks*
+### Custom stacks
 
 To create a custom stack:
 
