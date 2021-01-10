@@ -28,6 +28,7 @@ notes scratch --- open scratch pad
 notes edit <note> --- edit existing note
 notes journal --- create/edit daily journal entry
 notes [-h] --- show this message
+notes [-l | --list] --- show all notes
 notes stack [-adlnr] <title> --- create, delete, list, display stacks
 notes push [-d] <stack> --- push to stack
 notes pop [-d] <stack> <index> --- pop off stack
@@ -38,7 +39,25 @@ notes pop [-d] <stack> <index> --- pop off stack
 $ notes new my brilliant idea
 ```
 
-This will create a new note `$NOTESPATH/year/month/date/my_brilliant_idea.md` and open your default editor. 
+This will create a new note `$NOTESPATH/year/month/date/my_brilliant_idea.md` and open your default editor.
+
+**Edit an existing note**
+
+```
+$ notes edit idea
+``` 
+
+If there is only one matching note, it will open it in your default editor. Otherwise, you will see a message like this:
+
+```
+Multiple notes found.
+----
+[0]  2021/01/10/my_brilliant_idea.md
+[1]  2020/12/25/ideas.md
+----
+Choose an index to edit (or 'q' to quit): 
+```
+
 
 ### Helpful Aliases
 
