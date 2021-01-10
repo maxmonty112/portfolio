@@ -2,7 +2,7 @@
 
 A minamlist command-line interface for note taking and organization, journaling, and task-tracking/managment written in ruby inspired by (and emulative of) Max Hodak's note-taking [system](https://github.com/maxhodak/notes) written in python. 
 
-### Installation
+# Installation
 1. Clone repo
 
 2. Add the following to your `.bash_profile`: 
@@ -19,7 +19,7 @@ make install
 bundle install
 ```
     
-### Basic Usage
+# Basic Usage
 
 ```
 notes new <note> -- create new note
@@ -133,7 +133,15 @@ Outputs all your notes. Looks like this:
 $ notes -h
 ```
 
-### Stack
+# Journal
+
+```
+$ notes journal
+```
+
+This will create a note `$NOTESPATH/year/month/date/daily.md` (or edit if already created for the current day). You can edit previous daily notes and they will note be moved to a new directory. 
+
+# Stack
 
 This tool allows you to maintain numerous stacks to track various work flows. 
 
@@ -245,15 +253,7 @@ And to remove a stack:
 $ notes stack -r bolc
 ```
 
-### Journal
-
-```
-$ notes journal
-```
-
-This will create a note `$NOTESPATH/year/month/date/daily.md` (or edit if already created for the current day). You can edit previous daily notes and they will note be moved to a new directory. 
-
-### Helpful Aliases
+# Helpful Aliases
 
 ```
 alias scratch="notes scratch"
