@@ -35,13 +35,10 @@ notes pop [-d] <stack> <index> --- pop off stack
 ### Helpful Aliases
 
 ```
-notes new <note> -- create new note
-notes search [-ft] <phrase> --- search notes by name and or contents
-notes scratch --- open scratch pad
-notes edit <note> --- edit existing note
-notes journal --- create/edit daily journal entry
-notes [-h] --- show this message
-notes stack [-adlnr] <title> --- create, delete, list, display stacks
-notes push [-d] <stack> --- push to stack
-notes pop [-d] <stack> <index> --- pop off stack
+alias scratch="notes scratch"
+alias journal="notes journal"
+alias stack="notes stack"
+alias push="notes push"
+alias pop="notes pop"
+alias search="notes search"
 ```
