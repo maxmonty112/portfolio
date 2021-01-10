@@ -1,0 +1,16 @@
+GEM
+  specs:
+    fileutils (1.1.0)
+    json (2.1.0)
+    open3 (0.1.1)
+
+PLATFORMS
+  universal-darwin-19
+
+DEPENDENCIES
+  fileutils
+  json
+  open3
+
+BUNDLED WITH
+   2.2.3
