@@ -37,6 +37,8 @@ if __FILE__ == $0
       s.list
     elsif ARGV[1] == '-a' or ARGV[1] == '--all'
       s.all
+    elsif ARGV[1] == '-r' or ARGV[1] == '--remove'
+      s.remove
     else
       s.show
     end

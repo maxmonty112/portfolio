@@ -62,7 +62,10 @@ class Utils
     print "----\nChoose an index to edit (or 'q' to quit): "
     input = STDIN.gets
     exit if input == "q\n" or input == "\n"
+    zero = input == "0"
     i = input.to_i
+    exit if zero == false and i == 0
+    puts i
     if i > f.length-1 or i < 0 or i == ''
       puts "\nIndex out of range\n\n"
       exit
