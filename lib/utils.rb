@@ -14,6 +14,7 @@ class Utils
     puts "\tnotes edit <note> --- edit existing note"
     puts "\tnotes journal --- create/edit daily journal entry"
     puts "\tnotes [-h] --- show this message" 
+    puts "\tnotes [-l | --list] --- show all notes"
     puts "\tnotes stack [-adlnr] <title> --- create, delete, list, display stacks"
     puts "\tnotes push [-d] <stack> --- push to stack"
     puts "\tnotes pop [-d] <stack> <index> --- pop off stack"
