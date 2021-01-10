@@ -255,3 +255,8 @@ alias push="notes push"
 alias pop="notes pop"
 alias search="notes search"
 ```
+
+# Coming soon
+- encrypted notes 
+- add notes to a blockchain
+- more journal features
